@@ -1,6 +1,6 @@
 # Claude Constructor
 
-A systematic workflow engine for implementing full-stack features with Claude Code, designed with quality-driven development practices and planning at the center.
+A systematic workflow engine for implementing functionality with Claude Code, designed with quality-driven development practices and planning at the center.
 
 ## Overview
 
@@ -21,7 +21,7 @@ The main orchestrator (`feature.md`) follows this sequence:
 
 ### Implementation
 7. **Check out new branch** - Create feature branch
-8. **Implement increment** - Execute with parallel sub-agents
+8. **Implement increment** - Execute with parallel sub-agents if possible
 9. **Write end-to-end tests** - Cover user behavior
 
 ### Review
@@ -31,7 +31,9 @@ The main orchestrator (`feature.md`) follows this sequence:
 
 ## Usage
 
-Put the command files in your `.claude/commands` folder (either in your project or your home directory), and docs/ in the root of your project.
+There are two ways of using this workflow.
+
+1. Put the command files in your `.claude/commands` folder (either in your project or your home directory), and docs/ in the root of your project.
 Then run the following:
 
 ```bash
@@ -39,9 +41,19 @@ Then run the following:
 > /feature ABC-123
 ```
 
+2. Run the workflow from this directory, to make changes in a different code base.
+This enables you to reuse this workflow with any repository without copying/moving files.
+
+```bash
+> claude
+> /add-dir $path_to_target_repository
+> /feature ABC-123
+```
+
+Documentation for [`--add-dir`](https://docs.anthropic.com/en/docs/claude-code/cli-reference).
+
 Notes: 
 - If you want to skip the issue tracking system you could update the workflow to start with a prompt instead
-- You can use this setup in a repository-agnostic way if you use additional working directories (described below). This will likely require some changes.
 
 ## Configuration
 
@@ -50,7 +62,6 @@ Such as:
 
 - Using a different issue tracking system
 - Using different status transitions
-- Working with multiple repositories. I built this to assume a monorepo structure. You can work with separate repositories using [`--add-dir`](https://docs.anthropic.com/en/docs/claude-code/cli-reference)
 - Adding reference points for your specific way of doing things, e.g. adding documentation on your E2E test principles in docs/ and then reference it in commands/write-end-to-end-tests.md
 - Tweaking your technical guardrails (described in `CLAUDE.md`). I recommend using pre-commit hooks and/or Claude Code hooks and/or CI to make sure the technical guardrails are enforced. TDD is also a great instrument in my opinion.
 - Adapting the git branch and commit guidelines to suit your preferences
@@ -69,7 +80,7 @@ Such as:
 - Persistent tracking across all workflow steps in `state_management/{issue_key}.md`
 - TODO list maintenance and resumable workflows
 
-### Isseu Tracking Integration
+### Issue Tracking Integration
 - Issue status updates at each workflow stage
 - Progress comments with implementation details
 
@@ -104,13 +115,11 @@ I also recommend checking in on the work as it is happening, to gauge if anythin
 
 ### Required Configuration Files
 - `/CLAUDE.md` - General principles, quality gates, and development workflow
-- `/frontend/CLAUDE.md` - Frontend guidelines
-- `/backend/CLAUDE.md` - Backend guidelines
 - `docs/commit.md` - Git commit guidelines
 
 ### Optional Configuration Files
 - `docs/requirements.md` - Domain principles and business rules (can be referenced during implementation planning and code review)
-- ...and anything else you can dream up
+- ...and any additional context
 
 ### Issue Requirements
 **The workflow assumes well-groomed issues.** Users must ensure Linear issues contain:
@@ -123,6 +132,8 @@ I also recommend checking in on the work as it is happening, to gauge if anythin
 The quality of the implementation depends directly on the quality of the issue description and context provided.
 
 ## File Structure
+
+In this repository:
 
 ```
 .claude/commands/
@@ -142,7 +153,11 @@ The quality of the implementation depends directly on the quality of the issue d
 
 docs/
 └── git-commit.md
+```
 
+In the target repository:
+
+```
 state_management/                   # Generated during workflow
 └── {issue_key}.md
 
