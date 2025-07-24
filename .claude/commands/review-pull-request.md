@@ -19,7 +19,7 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
   - Do not edit existing comments
   - Do not make general PR comments
 
-4. Repeat steps 1 through 3 until the user approved the pull request. You are not allowed to approve the pull request yourself.
+4. Repeat steps 1 through 3 until the user approves the pull request. You are not allowed to approve the pull request yourself.
 
 5. Add a comment to the Linear issue describing the user feedback and changes made as a response
 

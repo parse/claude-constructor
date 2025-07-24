@@ -20,7 +20,7 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 ## This part of the workflow is done when
 
-- [ ] Frontend behavior is verified using end-to-end Playwright tests
+- [ ] Frontend behavior is verified using end-to-end tests
 - [ ] All unit, integration, and end-to-end tests pass (100% coverage of user behavior expected)
 - [ ] All quality gates pass (see `/CLAUDE.md` for commands)
 - [ ] No test failures introduced in areas of the code unrelated to this increment
