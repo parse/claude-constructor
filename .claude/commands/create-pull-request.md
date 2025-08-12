@@ -21,4 +21,6 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 6. Add a link to the pull request in the $ARGUMENTS in a new section called `## Pull Request`
 
-7. Report DONE to the orchestrating command
+7. Update Linear issue status to "Code Review" using `linear:update_issue`
+
+8. Report DONE to the orchestrating command
