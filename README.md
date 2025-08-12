@@ -52,7 +52,7 @@ This enables you to reuse this workflow with any repository without copying/movi
 
 Documentation for [`--add-dir`](https://docs.anthropic.com/en/docs/claude-code/cli-reference).
 
-Notes: 
+Notes:
 - If you want to skip the issue tracking system you could update the workflow to start with a prompt instead
 
 ## Configuration
@@ -115,7 +115,7 @@ I also recommend checking in on the work as it is happening, to gauge if anythin
 
 ### Required Configuration Files
 - `/CLAUDE.md` - General principles, quality gates, and development workflow
-- `docs/commit.md` - Git commit guidelines
+- `docs/git-commit.md` - Git commit guidelines
 
 ### Optional Configuration Files
 - `docs/requirements.md` - Domain principles and business rules (can be referenced during implementation planning and code review)
