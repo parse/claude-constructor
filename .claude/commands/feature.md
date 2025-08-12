@@ -1,3 +1,8 @@
+---
+argument-hint: [issue key]
+description: Implement feature described in [issue key]
+---
+
 # Feature Implementation Command
 
 ## Purpose
