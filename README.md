@@ -14,7 +14,7 @@ The main orchestrator (`feature.md`) follows this sequence:
 ### Planning
 1. **Read configuration files** - Load development guidelines, quality gates, and other documentation
 2. **Create state management file** - Used to track workflow progress
-3. **Read Linear issue** - Fetch issue details via Linear MCP
+3. **Read Jira issue** - Fetch issue details via Jira MCP
 4. **Define implementation plan** - Complete business value delivery strategy
 5. **Write specification** - Technical spec with parallelization plan
 6. **Get specification sign-off** - Iterate on the specification until it's ready *(Human Required)*
@@ -22,12 +22,11 @@ The main orchestrator (`feature.md`) follows this sequence:
 ### Implementation
 7. **Check out new branch** - Create feature branch
 8. **Implement increment** - Execute with parallel sub-agents if possible
-9. **Write end-to-end tests** - Cover user behavior
 
 ### Review
-10. **Perform code review** - Self-review, addressing findings automatically
-11. **Create pull request** - Creating a pull request on GitHub, describing the work
-12. **Review pull request** - Monitor and respond to feedback *(Human Required)*
+9. **Perform code review** - Self-review, addressing findings automatically
+10. **Create pull request** - Creating a pull request on GitHub, describing the work
+11. **Review pull request** - Monitor and respond to feedback *(Human Required)*
 
 ## Usage
 
@@ -62,7 +61,7 @@ Such as:
 
 - Using a different issue tracking system
 - Using different status transitions
-- Adding reference points for your specific way of doing things, e.g. adding documentation on your E2E test principles in docs/ and then reference it in commands/write-end-to-end-tests.md
+- Adding reference points for your specific way of doing things
 - Tweaking your technical guardrails (described in `CLAUDE.md`). I recommend using pre-commit hooks and/or Claude Code hooks and/or CI to make sure the technical guardrails are enforced. TDD is also a great instrument in my opinion.
 - Adapting the git branch and commit guidelines to suit your preferences
 
@@ -108,7 +107,7 @@ I also recommend checking in on the work as it is happening, to gauge if anythin
 ## Prerequisites
 
 ### Technical Requirements
-- Linear MCP integration configured
+- Jira MCP integration configured
 - GitHub CLI (`gh`) authenticated
 - Git repository with `main` branch
 - Quality gate tools available
@@ -122,7 +121,7 @@ I also recommend checking in on the work as it is happening, to gauge if anythin
 - ...and any additional context
 
 ### Issue Requirements
-**The workflow assumes well-groomed issues.** Users must ensure Linear issues contain:
+**The workflow assumes well-groomed issues.** Users must ensure Jira issues contain:
 - Clear problem definition and business context
 - Detailed feature requirements and acceptance criteria
 - Proposed solution approach or architecture direction
@@ -146,7 +145,6 @@ In this repository:
 ├── git-checkout.md
 ├── implement-increment.md
 ├── implement-sub-increment.md
-├── write-end-to-end-tests.md
 ├── code-review.md
 ├── create-pull-request.md
 └── review-pull-request.md

@@ -12,8 +12,8 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 ## Workflow Steps
 
-1. Update Linear issue status:
-- Set status to "In Progress" using `linear:update_issue`. List statuses using `linear:list_issue_statuses` if needed.
+1. Update Jira issue status:
+- Set status to "In Progress" using `jira:update_issue`. List statuses using `jira:list_issue_statuses` if needed.
 - Add comment: "Claude Code implementation started for {name of specification file linked in $ARGUMENTS}"
 
 2. Understand the division of work and spawn sub-agents:

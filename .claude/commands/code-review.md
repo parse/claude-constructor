@@ -31,7 +31,7 @@ When this command is run with a state management file as $ARGUMENTS.
 
 6. Final verdict: APPROVED or NEEDS_CHANGES with clear reasons
 
-7. Once APPROVED, add a comment to the Linear issue describing the findings and verdict, using `linear:create_comment`
+7. Once APPROVED, add a comment to the Jira issue describing the findings and verdict, using `jira:create_comment`
 
 8. Report DONE to the orchestrating command.
 

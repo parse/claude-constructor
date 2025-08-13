@@ -1,5 +1,5 @@
 ---
-model: claude-opus-4-1-20250805
+# model: claude-opus-4-1-20250805
 ---
 
 # Write Specification Command
@@ -24,7 +24,7 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
    - Assign agent IDs (e.g., agent-1, agent-2) to parallelizable work
    - Mark sequential dependencies clearly
    - Include estimated time/complexity for load balancing
-   
+
   Example structure:
   Parallelization Plan
 
@@ -33,8 +33,8 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
   agent-3: Frontend component (depends on agent-1)
   agent-4: Integration tests (depends on agent-1, agent-2)
 
-4. Create specification file: `specifications/{issue_key}_specification_{timestamp}.md`. Note that end-to-end tests should be left out, since they will be covered in a later step of the workflow.
+1. Create specification file: `specifications/{issue_key}_specification_{timestamp}.md`.
 
-5. Add a reference to the specification file in $ARGUMENTS, in a new section called `## Specification file`
+2. Add a reference to the specification file in $ARGUMENTS, in a new section called `## Specification file`
 
-6. Report DONE to the orchestrating command
+3. Report DONE to the orchestrating command

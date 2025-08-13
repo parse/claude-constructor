@@ -23,6 +23,6 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 4. Iterate on the specification until the user gives their sign-off
 
-5. Add specification in Linear issue using `linear:create_comment`. The Linear issue information can be found in $ARGUMENTS
+5. Add specification in Jira issue using `jira:create_comment`. The Jira issue information can be found in $ARGUMENTS
 
 6. Report DONE to the orchestrating command

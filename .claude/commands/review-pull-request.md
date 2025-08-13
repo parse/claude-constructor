@@ -21,6 +21,6 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 4. Repeat steps 1 through 3 until the user approves the pull request. You are not allowed to approve the pull request yourself.
 
-5. Add a comment to the Linear issue describing the user feedback and changes made as a response
+5. Add a comment to the Jira issue describing the user feedback and changes made as a response
 
 6. Report DONE to the orchestrating command
