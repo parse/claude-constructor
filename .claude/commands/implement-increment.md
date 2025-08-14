@@ -30,7 +30,7 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 - [ ] All sub-agents report DONE
 - [ ] Single behavior is fully implemented, both on the backend and the frontend
 - [ ] All unit and integration tests pass
-- [ ] All quality gates pass (see `/CLAUDE.md` for commands)
+- [ ] All quality gates pass (see `/CLAUDE.md` for commands, section `Quality gates`)
 - [ ] No breaking changes introduced
 - [ ] No test failures introduced in areas of the code unrelated to this increment
 - [ ] Feature works in both development and build modes

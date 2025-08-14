@@ -20,7 +20,7 @@ Create a TODO list for the workflow steps, and follow it.
 
 ## Workflow Steps
 
-1. Read `CLAUDE.md`: General principles, quality gates, and development workflow
+1. Read `CLAUDE.md`: General principles, quality gates (section `Quality gates`), and development workflow
 2. Create a state management file for this increment - run the .claude/commands/create-state-management-file.md command, passing $ARGUMENTS as argument to it
 3. Read Jira Issue - run the .claude/commands/read-issue.md command, passing the state management file as argument to it
 4. Define implementation plan - run the .claude/commands/define-implementation-plan.md command, passing the state management file as argument to it

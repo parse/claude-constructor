@@ -62,7 +62,7 @@ Such as:
 - Using a different issue tracking system
 - Using different status transitions
 - Adding reference points for your specific way of doing things
-- Tweaking your technical guardrails (described in `CLAUDE.md`). I recommend using pre-commit hooks and/or Claude Code hooks and/or CI to make sure the technical guardrails are enforced. TDD is also a great instrument in my opinion.
+- Tweaking your technical guardrails (described in `CLAUDE.md`, section: `Quality gates`). I recommend using pre-commit hooks and/or Claude Code hooks and/or CI to make sure the technical guardrails are enforced. TDD is also a great instrument in my opinion.
 - Adapting the git branch and commit guidelines to suit your preferences
 
 ## Key Features
