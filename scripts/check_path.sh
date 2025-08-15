@@ -19,22 +19,29 @@ fi
 # Get current working directory
 current_dir=$(pwd)
 
-# Convert relative path to absolute path
-if [[ "$file_path" = /* ]]; then
-    # Already absolute
+# Simple approach: just check if path starts with current directory or relative patterns
+# Convert to absolute path for absolute paths only
+if [[ "$file_path" = /* ]] || [[ "$file_path" = \\\\* ]]; then
     abs_file_path="$file_path"
+    # Simple cleanup for absolute paths
+    abs_file_path=$(echo "$abs_file_path" | sed 's|//\+|/|g')
 else
-    # Relative path - prepend current directory
-    abs_file_path="$current_dir/$file_path"
+    # For relative paths, check common patterns that indicate current directory
+    case "$file_path" in
+        ./* | */../* | */. | */.. | . | .. )
+            # These patterns might resolve to current directory, block them
+            abs_file_path="$current_dir/$file_path"
+            ;;
+        ../* )
+            # Paths starting with ../ should be allowed (going outside)
+            abs_file_path="external_path"
+            ;;
+        * )
+            # Other relative paths (no ./ prefix) are in current directory
+            abs_file_path="$current_dir/$file_path"
+            ;;
+    esac
 fi
-
-# Simple path normalization - remove redundant slashes and current directory references
-abs_file_path=$(echo "$abs_file_path" | sed 's|//\+|/|g' | sed 's|/\./|/|g')
-
-# Handle parent directory references more carefully
-while [[ "$abs_file_path" =~ /[^/]+/\.\./  ]]; do
-    abs_file_path=$(echo "$abs_file_path" | sed 's|/[^/]\+/\.\./|/|')
-done
 
 # Check if file is under current directory
 case "$abs_file_path" in
