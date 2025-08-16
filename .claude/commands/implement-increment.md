@@ -30,18 +30,18 @@ Issue Key: [issue key from state management file]
 Comment Text: Claude Code implementation started for {name of specification file linked in $ARGUMENTS}
 ```
 
-3. Understand the division of work and spawn sub-agents:
-   a. Read specification to identify agent_ids
-   b. For each agent_id: spawn a sub-agent using the Task tool, with agent_id and $ARGUMENTS as arguments to it. For tasks that can be done in parallel, and where dependencies are fulfilled, spawn sub-agents in parallel.
-   c. Monitor sub-agent progress
-   d. Keep an updated list of TODOs in $ARGUMENTS, including sub-agent status
-   e. When monitoring completes for all agent_ids, proceed to step 4
+3. Understand the division of work and spawn subagents:
+    - Read specification to identify agent_ids
+    - For each agent_id: spawn a subagent using the Task tool, with agent_id and $ARGUMENTS as arguments to it. For tasks that can be done in parallel, and where dependencies are fulfilled, spawn subagents in parallel.
+    - Monitor subagent progress
+    - Keep an updated list of TODOs in $ARGUMENTS, including subagent status
+    - When monitoring completes for all agent_ids, proceed to step 4
 
 4. Report DONE to the orchestrating command
 
 ## This part of the workflow is done when
 
-- [ ] All sub-agents report DONE
+- [ ] All subagents report DONE
 - [ ] Single behavior is fully implemented, both on the backend and the frontend
 - [ ] All unit and integration tests pass
 - [ ] All quality gates pass (see `/CLAUDE.md` for commands)

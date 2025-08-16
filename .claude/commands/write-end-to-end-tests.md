@@ -9,8 +9,8 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 ## Workflow Steps
 
 1. Understand how the increment has been implemented, and the context surrounding it:
-   a. Read specification to learn the business value that the increment is delivering, and what the plan for implementing that value is
-   b. Read the code implemented, using git to identify what has been added
+    - Read specification to learn the business value that the increment is delivering, and what the plan for implementing that value is
+    - Read the code implemented, using git to identify what has been added
 
 2. Write a plan for how to test the necessary behavior
 

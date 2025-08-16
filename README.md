@@ -4,7 +4,7 @@ A systematic workflow engine for implementing functionality with Claude Code, de
 
 ## Overview
 
-This system orchestrates feature development through a structured 12-step workflow that covers complete implementation, comprehensive testing, and automated code review. Each command works together as part of a larger orchestrated process.
+This system orchestrates feature development through a structured 13-step workflow that covers complete implementation, comprehensive testing, and automated code review. Each command works together as part of a larger orchestrated process.
 The goal has been to enable Claude Code to work for extended periods of time without deviating from the plan.
 
 ## Core Workflow
@@ -15,19 +15,20 @@ The main orchestrator (`feature.md`) follows this sequence:
 1. **Read configuration files** - Load development guidelines, quality gates, and other documentation
 2. **Create state management file** - Used to track workflow progress
 3. **Read Linear issue** - Fetch issue details via Linear MCP
-4. **Define implementation plan** - Complete business value delivery strategy
-5. **Write specification** - Technical spec with parallelization plan
-6. **Get specification sign-off** - Iterate on the specification until it's ready *(Human Required)*
+4. **Define requirements** - Create detailed requirements specification covering business value, user journey, acceptance criteria, and technical constraints
+5. **Get requirements sign-off** - Iterate on the requirements definition until it's ready *(Human Required)*
+6. **Write specification** - Technical spec with parallelization plan
+7. **Get specification sign-off** - Iterate on the specification until it's ready *(Human Required)*
 
 ### Implementation
-7. **Check out new branch** - Create feature branch
-8. **Implement increment** - Execute with parallel sub-agents if possible
-9. **Write end-to-end tests** - Cover user behavior
+8. **Check out new branch** - Create feature branch
+9. **Implement increment** - Execute with parallel subagents if possible
+10. **Write end-to-end tests** - Cover user behavior
 
 ### Review
-10. **Perform code review** - Self-review, addressing findings automatically
-11. **Create pull request** - Creating a pull request on GitHub, describing the work
-12. **Review pull request** - Monitor and respond to feedback *(Human Required)*
+11. **Perform code review** - Self-review, addressing findings automatically
+12. **Create pull request** - Creating a pull request on GitHub, describing the work
+13. **Review pull request** - Monitor and respond to feedback *(Human Required)*
 
 ## Usage
 
@@ -130,17 +131,20 @@ This repository is a work in progress, and there are things you might want to ch
 
 The workflow includes critical human approval gates:
 
-### 1. Specification Sign-off (Step 6)
-- **Human Required**: Must approve technical specification before implementation begins
-- **Process**: Claude Code presents assumptions and detailed specification for review
-- **Workflow**: Cannot proceed to implementation until human approval is given
+### 1. Requirements Sign-off (Step 5)
+- **Process**: Claude Constructor presents assumptions and detailed understanding of requirements
+- **Human Required**: Must approve definition of requirements
 
-### 2. Pull Request Review (Step 12)
+### 2. Specification Sign-off (Step 7)
+- **Process**: Claude Constructor presents assumptions and detailed specification for review
+- **Human Required**: Must approve technical specification before implementation begins
+
+### 3. Pull Request Review (Step 13)
 - **Human Required**: Reviewing and approving pull request on GitHub
 - **Process**: Human adds comments/feedback directly in GitHub PR interface as part of a Review
-- **Workflow**: Claude monitors for new comments but must be asked to check for updates, and the Review needs to be submitted
+- **Workflow**: Claude Constructor monitors for new comments but must be asked to check for updates, and the Review needs to be submitted
 
-### 3. Merging Pull Request (After Step 12)
+### 4. Merging Pull Request (After Step 13)
 - **Human Required**: Must merge the pull request manually
 
 These gates ensure human oversight of decisions and final code quality before delivery.
@@ -184,9 +188,10 @@ In this repository:
 │   ├── feature.md                          # Main orchestrator
 │   ├── create-state-management-file.md
 │   ├── read-issue.md
-│   ├── define-implementation-plan.md
+│   ├── define-requirements.md
+│   ├── requirements-sign-off.md
 │   ├── write-specification.md
-│   ├── specification-signoff.md
+│   ├── specification-sign-off.md
 │   ├── git-checkout.md
 │   ├── implement-increment.md
 │   ├── implement-sub-increment.md

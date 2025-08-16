@@ -17,17 +17,17 @@ When this command is run with a state management file as $ARGUMENTS.
 3. Analyze current codebase against the specification requirements
 
 4. Verify completion criteria:
-   - [ ] Single behavior is fully implemented
-   - [ ] All quality gates pass (see below)
-   - [ ] No breaking changes introduced
-   - [ ] Feature works in both development and build modes
-   - [ ] Business rules are enforced consistently
+    - [ ] Single behavior is fully implemented
+    - [ ] All quality gates pass (see below)
+    - [ ] No breaking changes introduced
+    - [ ] Feature works in both development and build modes
+    - [ ] Business rules are enforced consistently
 
 5. Ultrathink about your findings and provide detailed feedback:
-   - What's implemented correctly
-   - What's missing or incomplete
-   - Any issues found
-   - Specific next steps if changes needed
+    - What's implemented correctly
+    - What's missing or incomplete
+    - Any issues found
+    - Specific next steps if changes needed
 
 6. Final verdict: APPROVED or NEEDS_CHANGES with clear reasons
 
