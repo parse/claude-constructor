@@ -68,7 +68,8 @@ Create or update `.claude/settings.claude-constructor.json` in your repository:
 
 ```json
 {
-  "issue-tracking-provider": "linear"
+  "issue-tracking-provider": "linear",
+  "default-branch": "main"
 }
 ```
 
@@ -98,7 +99,7 @@ Create or update `.claude/settings.claude-constructor.json` in your repository:
 
 The workflow expects issues to support these standard status transitions:
 - **"In Progress"** - When implementation begins
-- **"Code Review"** - When automated code review is done and pull request has been created  
+- **"Code Review"** - When automated code review is done and pull request has been created
 
 Your issue tracking system should have statuses that match or can be mapped to these workflow states.
 
