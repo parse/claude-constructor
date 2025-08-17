@@ -21,6 +21,14 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 6. Add a link to the pull request in the $ARGUMENTS in a new section called `## Pull Request`
 
-7. Update Linear issue status to "Code Review" using `linear:update_issue`
+7. Update issue status to "Code Review" - run the .claude/commands/issue/update-issue.md command, passing the issue key and new status as arguments to it
+
+Get the issue key from the state management file in $ARGUMENTS.
+
+Format the arguments as:
+```
+Issue Key: [issue key from state management file]
+New Status: Code Review
+```
 
 8. Report DONE to the orchestrating command
