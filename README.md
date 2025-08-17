@@ -156,12 +156,12 @@ I also recommend checking in on the work as it is happening, to gauge if anythin
 ### Technical Requirements
 - Issue tracking system MCP integration configured (see Issue Tracking System Integration section)
 - GitHub CLI (`gh`) authenticated
-- Git repository with `main` branch
+- Git repository
 - Quality gate tools available
 
 ### Required Configuration Files
 - `/CLAUDE.md` - General principles, quality gates, and development workflow
-- `docs/git-commit.md` - Git commit guidelines
+- `docs/git-commit.md` - Git commit guidelines (example available in `docs/git-commit.md` in Claude Constructor)
 - `.claude/settings.claude-constructor.json` - Issue tracking system provider configuration
 
 ### Optional Configuration Files

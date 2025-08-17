@@ -1,3 +1,4 @@
 {
-  "issue-tracking-provider": "linear"
+  "issue-tracking-provider": "linear",
+  "default-branch": "main"
 }
