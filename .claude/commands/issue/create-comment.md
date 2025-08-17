@@ -28,7 +28,7 @@ Comment Text: [comment_content]
 - Add the comment to the specified issue
 
 ### For Jira Provider (`"jira"`)
-- Use `jira:create_comment` with the issue key and comment text from $ARGUMENTS
+- Use `jira:add_comment_to_issue` with the issue key and comment text from $ARGUMENTS
 - Add the comment to the specified issue
 
 4. **Output Results**: Display confirmation of the comment creation:

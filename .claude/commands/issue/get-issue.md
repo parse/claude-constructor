@@ -32,7 +32,7 @@ Issue Key: [issue_key]
 
 4. **Output Results**: Display the issue information in this format:
    - **Key**: Issue key
-   - **ID**: Issue ID  
+   - **ID**: Issue ID
    - **Title**: Issue title
    - **Description**: Issue description
 
