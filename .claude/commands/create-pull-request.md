@@ -17,10 +17,12 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 4. Push the commit using `git push`
 
-5. Create a pull request using `gh pr create --title "feat: [issue key] [brief description from commit]" --base main --head $(git branch --show-current)`
+5. Read the default branch name from the line "Default branch is [name]" in docs/git-commit.md
 
-6. Add a link to the pull request in the $ARGUMENTS in a new section called `## Pull Request`
+6. Create a pull request using `gh pr create --title "feat: [issue key] [brief description from commit]" --base [default branch name] --head $(git branch --show-current)`
 
-7. Update Linear issue status to "Code Review" using `linear:update_issue`
+7. Add a link to the pull request in the $ARGUMENTS in a new section called `## Pull Request`
 
-8. Report DONE to the orchestrating command
+8. Update Linear issue status to "Code Review" using `linear:update_issue`
+
+9.  Report DONE to the orchestrating command

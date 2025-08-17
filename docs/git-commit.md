@@ -2,6 +2,10 @@
 
 ## Git Workflow
 
+### Default branch
+
+Default branch is `main`.
+
 ### Add Standards
 
 Never do `git add .`. Always add individual files, and only the files related to the current implementation you are working on.

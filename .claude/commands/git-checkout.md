@@ -8,7 +8,7 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 ## Workflow Steps
 
-1. Ensure that you are on the main branch, using `git checkout main`
+1. Read the default branch name from the line "Default branch is [name]" in docs/git-commit.md, use with `git checkout [name]`.
 
 2. Ensure that you have the latest changes, using `git pull`
 
