@@ -51,7 +51,7 @@ This enables you to reuse this workflow with any repository without copying/movi
 > /feature ABC-123
 ```
 
-Documentation for [`--add-dir`](https://docs.anthropic.com/en/docs/claude-code/cli-reference).
+Documentation for [`/add-dir`](https://docs.anthropic.com/en/docs/claude-code/cli-reference).
 
 Notes:
 - If you want to skip the issue tracking system you could update the workflow to start with a prompt instead
@@ -204,7 +204,7 @@ In this repository:
 │   │   ├── update-issue.md                 # Issue tracking system: Update status
 │   │   ├── create-comment.md               # Issue tracking system: Add comments
 │   │   ├── list-issue-statuses.md          # Issue tracking system: List statuses
-│   │   ├── operations.md                   # Issue tracking system abstraction (reference)
+│   │   └── operations.md                   # Issue tracking system abstraction (reference)
 └── settings.claude-constructor.json        # Issue tracking system configuration
 
 docs/
@@ -220,7 +220,3 @@ state_management/                   # Generated during workflow
 specifications/                     # Generated during workflow
 └── {issue_key}_specification_{timestamp}.md
 ```
-
-## Tips
-
-- Set CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1 in your environment variables to force Claude Code to always return to the original working directory after each Bash command. This saves on both tokens and Claude being confused about where it is.
