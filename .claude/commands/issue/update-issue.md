@@ -31,6 +31,12 @@ Expected status values: "In Progress", "Code Review"
 - Use `linear:update_issue` to set the issue to the matched status
 - If no exact match is found, use the closest matching status name
 
+### For Jira Provider (`"jira"`)
+- First, use `jira:list_issue_statuses` to get all available statuses for the issue
+- Find the best match for the new status from $ARGUMENTS (handles typos/variations)
+- Use `jira:update_issue` to set the issue to the matched status
+- If no exact match is found, use the closest matching status name
+
 4. **Output Results**: Display confirmation of the status update:
    - **Issue**: [issue_key]
    - **Previous Status**: [if available]

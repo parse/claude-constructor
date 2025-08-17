@@ -27,6 +27,10 @@ Comment Text: [comment_content]
 - Use `linear:create_comment` with the issue ID and comment text from $ARGUMENTS
 - Add the comment to the specified issue
 
+### For Jira Provider (`"jira"`)
+- Use `jira:create_comment` with the issue key and comment text from $ARGUMENTS
+- Add the comment to the specified issue
+
 4. **Output Results**: Display confirmation of the comment creation:
    - **Issue**: [issue_key]
    - **Comment Added**: [comment_preview - first 100 characters]

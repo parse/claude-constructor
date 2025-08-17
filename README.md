@@ -68,7 +68,7 @@ Create or update `.claude/settings.claude-constructor.json` in your repository:
 
 ```json
 {
-  "provider": "linear"
+  "issue-tracking-provider": "linear"
 }
 ```
 
@@ -77,11 +77,21 @@ Create or update `.claude/settings.claude-constructor.json` in your repository:
 **Linear (Default)**
 ```json
 {
-  "provider": "linear"
+  "issue-tracking-provider": "linear"
 }
 ```
 - Requires Linear MCP integration configured
 - Uses `linear:get_issue`, `linear:update_issue`, `linear:create_comment`, `linear:list_issue_statuses`
+- Supports fuzzy matching for status names
+
+**Jira**
+```json
+{
+  "issue-tracking-provider": "jira"
+}
+```
+- Requires Jira MCP integration configured
+- Uses `jira:get_issue`, `jira:update_issue`, `jira:create_comment`, `jira:list_issue_statuses`
 - Supports fuzzy matching for status names
 
 #### Issue Tracking System Requirements

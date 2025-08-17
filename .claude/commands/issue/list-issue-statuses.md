@@ -26,6 +26,10 @@ Issue Key: [issue_key]
 - Use `linear:list_issue_statuses` with the issue key from $ARGUMENTS
 - Retrieve all available status names for the issue
 
+### For Jira Provider (`"jira"`)
+- Use `jira:list_issue_statuses` with the issue key from $ARGUMENTS
+- Retrieve all available status names for the issue
+
 4. **Output Results**: Display the available statuses:
    - **Issue**: [issue_key]
    - **Available Statuses**: 
