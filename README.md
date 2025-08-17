@@ -92,7 +92,7 @@ Create or update `.claude/settings.claude-constructor.json` in your repository:
 }
 ```
 - Requires Jira MCP integration configured
-- Uses `jira:get_issue`, `jira:update_issue`, `jira:create_comment`, `jira:list_issue_statuses`
+- Uses `jira:get_issue`, `jira:add_comment_to_issue`, `jira:get_transitions_for_issue`, `jira:transition_issue`
 - Supports fuzzy matching for status names
 
 #### Issue Tracking System Requirements
