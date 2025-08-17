@@ -214,8 +214,6 @@ In this repository:
 │   │   ├── get-issue.md                    # Issue tracking system: Get issue details
 │   │   ├── update-issue.md                 # Issue tracking system: Update status
 │   │   ├── create-comment.md               # Issue tracking system: Add comments
-│   │   ├── list-issue-statuses.md          # Issue tracking system: List statuses
-│   │   └── operations.md                   # Issue tracking system abstraction (reference)
 └── settings.claude-constructor.json        # Issue tracking system configuration
 
 docs/
