@@ -105,9 +105,9 @@ Your issue tracking system should have statuses that match or can be mapped to t
 
 #### Adding New Providers
 
-To add support for additional issue tracking systems (Jira, GitHub Issues, etc.):
+To add support for additional issue tracking systems (GitHub Issues, etc.):
 
-1. Update the issue command files (`get-issue.md`, `update-issue.md`, etc.)
+1. Update the issue command files (`get-issue.md`, `update-issue.md`, `create-comment.md` etc.)
 2. Add provider-specific MCP command mappings
 3. Add the new provider option to the configuration
 
