@@ -1,4 +1,5 @@
 {
   "issue-tracking-provider": "linear",
-  "default-branch": "main"
+  "default-branch": "main",
+  "silent-mode": false
 }
