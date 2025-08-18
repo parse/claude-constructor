@@ -19,9 +19,15 @@ Comment Text: [comment_content]
 
 1. **Parse Arguments**: Extract the issue key and comment text from $ARGUMENTS
 
-2. **Load Configuration**: Read `.claude/settings.claude-constructor.json` to determine the issue tracking provider
+2. **Load Configuration**: Read `.claude/settings.claude-constructor.json` to determine the issue tracking provider and check silent mode setting
 
-3. **Execute Create Comment Operation**:
+3. **Check Silent Mode**: 
+   - If `silent-mode` is `true` in the configuration:
+     - Log the comment operation locally: "Silent mode: Would have added comment to [issue_key]: [comment_preview]"
+     - Skip the actual API call (step 4)
+     - Continue to step 5
+
+4. **Execute Create Comment Operation** (only if silent mode is false):
 
 ### For Linear Provider (`"linear"`)
 - Use `linear:create_comment` with the issue ID and comment text from $ARGUMENTS
@@ -31,14 +37,14 @@ Comment Text: [comment_content]
 - Use `jira:add_comment_to_issue` with the issue key and comment text from $ARGUMENTS
 - Add the comment to the specified issue
 
-4. **Output Results**: Display confirmation of the comment creation:
+5. **Output Results**: Display confirmation of the comment creation:
    - **Issue**: [issue_key]
-   - **Comment Added**: [comment_preview - first 100 characters]
-   - **Result**: Success/Failure
+   - **Comment Added**: [comment_preview - first 100 characters] 
+   - **Result**: Success/Failure (or "Skipped - Silent Mode" if applicable)
 
-5. **Error Handling**: If the issue operation fails, log the error but continue gracefully
+6. **Error Handling**: If the issue operation fails, log the error but continue gracefully
 
-6. **Report DONE** to the orchestrating command
+7. **Report DONE** to the orchestrating command
 
 ## Usage Example
 

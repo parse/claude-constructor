@@ -21,9 +21,15 @@ Expected status values: "In Progress", "Code Review"
 
 1. **Parse Arguments**: Extract the issue key and new status from $ARGUMENTS
 
-2. **Load Configuration**: Read `.claude/settings.claude-constructor.json` to determine the issue tracking provider
+2. **Load Configuration**: Read `.claude/settings.claude-constructor.json` to determine the issue tracking provider and check silent mode setting
 
-3. **Execute Update Status Operation**:
+3. **Check Silent Mode**:
+   - If `silent-mode` is `true` in the configuration:
+     - Log the status update operation locally: "Silent mode: Would have updated [issue_key] status to '[new_status]'"
+     - Skip the actual API calls (step 4)
+     - Continue to step 5
+
+4. **Execute Update Status Operation** (only if silent mode is false):
 
 ### For Linear Provider (`"linear"`)
 - First, use `linear:list_issue_statuses` to get all available statuses for the issue
@@ -37,15 +43,15 @@ Expected status values: "In Progress", "Code Review"
 - Use `jira:transition_issue` to move the issue to the matched transition
 - If no exact match is found, use the closest matching status name
 
-4. **Output Results**: Display confirmation of the status update:
+5. **Output Results**: Display confirmation of the status update:
    - **Issue**: [issue_key]
    - **Previous Status**: [if available]
    - **New Status**: [updated_status]
-   - **Result**: Success/Failure
+   - **Result**: Success/Failure (or "Skipped - Silent Mode" if applicable)
 
-5. **Error Handling**: If the issue operation fails, log the error but continue gracefully
+6. **Error Handling**: If the issue operation fails, log the error but continue gracefully
 
-6. **Report DONE** to the orchestrating command
+7. **Report DONE** to the orchestrating command
 
 ## Usage Example
 

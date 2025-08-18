@@ -64,12 +64,12 @@ The workflow supports multiple issue tracking systems through an abstraction lay
 
 #### Configuration File
 
-Create or update `.claude/settings.claude-constructor.json` in your repository:
-
 ```json
+# .claude/settings.claude-constructor.json
 {
   "issue-tracking-provider": "linear",
-  "default-branch": "main"
+  "default-branch": "main",
+  "silent-mode": false
 }
 ```
 
@@ -77,6 +77,7 @@ Create or update `.claude/settings.claude-constructor.json` in your repository:
 
 **Linear (Default)**
 ```json
+# .claude/settings.claude-constructor.json
 {
   "issue-tracking-provider": "linear"
 }
@@ -87,6 +88,7 @@ Create or update `.claude/settings.claude-constructor.json` in your repository:
 
 **Jira**
 ```json
+# .claude/settings.claude-constructor.json
 {
   "issue-tracking-provider": "jira"
 }
@@ -94,6 +96,29 @@ Create or update `.claude/settings.claude-constructor.json` in your repository:
 - Requires Jira MCP integration configured
 - Uses `jira:get_issue`, `jira:add_comment_to_issue`, `jira:get_transitions_for_issue`, `jira:transition_issue`
 - Supports fuzzy matching for status names
+
+#### Silent Mode
+
+Silent mode allows you to run the workflow without making external API calls to issue tracking systems or creating GitHub pull requests. This is useful for:
+- Testing workflows locally without side effects
+- Dry-run scenarios to verify changes
+- Development environments where external integrations are not available
+
+To enable silent mode, set `"silent-mode": true` in your configuration:
+
+```json
+# .claude/settings.claude-constructor.json
+{
+  "silent-mode": true
+}
+```
+
+When silent mode is enabled:
+- **Issue comments**: Logged locally but not posted to issue tracker
+- **Issue status updates**: Logged locally but not updated in the issue tracker
+- **GitHub pull requests**: Code is committed and pushed, but PR creation is skipped
+- **PR review comments**: Skipped entirely
+- All other operations (git commits, code changes, tests) execute normally
 
 #### Issue Tracking System Requirements
 
