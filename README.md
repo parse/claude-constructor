@@ -68,7 +68,8 @@ Create or update `.claude/settings.claude-constructor.json` in your repository:
 
 ```json
 {
-  "provider": "linear"
+  "issue-tracking-provider": "linear",
+  "default-branch": "main"
 }
 ```
 
@@ -77,26 +78,36 @@ Create or update `.claude/settings.claude-constructor.json` in your repository:
 **Linear (Default)**
 ```json
 {
-  "provider": "linear"
+  "issue-tracking-provider": "linear"
 }
 ```
 - Requires Linear MCP integration configured
 - Uses `linear:get_issue`, `linear:update_issue`, `linear:create_comment`, `linear:list_issue_statuses`
 - Supports fuzzy matching for status names
 
+**Jira**
+```json
+{
+  "issue-tracking-provider": "jira"
+}
+```
+- Requires Jira MCP integration configured
+- Uses `jira:get_issue`, `jira:add_comment_to_issue`, `jira:get_transitions_for_issue`, `jira:transition_issue`
+- Supports fuzzy matching for status names
+
 #### Issue Tracking System Requirements
 
 The workflow expects issues to support these standard status transitions:
 - **"In Progress"** - When implementation begins
-- **"Code Review"** - When automated code review is done and pull request has been created  
+- **"Code Review"** - When automated code review is done and pull request has been created
 
 Your issue tracking system should have statuses that match or can be mapped to these workflow states.
 
 #### Adding New Providers
 
-To add support for additional issue tracking systems (Jira, GitHub Issues, etc.):
+To add support for additional issue tracking systems (GitHub Issues, etc.):
 
-1. Update the issue command files (`get-issue.md`, `update-issue.md`, etc.)
+1. Update the issue command files (`get-issue.md`, `update-issue.md`, `create-comment.md` etc.)
 2. Add provider-specific MCP command mappings
 3. Add the new provider option to the configuration
 
@@ -203,8 +214,6 @@ In this repository:
 │   │   ├── get-issue.md                    # Issue tracking system: Get issue details
 │   │   ├── update-issue.md                 # Issue tracking system: Update status
 │   │   ├── create-comment.md               # Issue tracking system: Add comments
-│   │   ├── list-issue-statuses.md          # Issue tracking system: List statuses
-│   │   └── operations.md                   # Issue tracking system abstraction (reference)
 └── settings.claude-constructor.json        # Issue tracking system configuration
 
 docs/

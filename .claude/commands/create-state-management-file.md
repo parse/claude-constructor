@@ -9,5 +9,5 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 ## Workflow Steps
 
 1. Write the following at the top of the empty state management file:
-`Linear Issue Key: {issue_key}` (replace {issue_key} with $ARGUMENTS)
+`Issue Key: {issue_key}` (replace {issue_key} with $ARGUMENTS)
 2. Report DONE to the orchestrating command

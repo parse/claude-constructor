@@ -26,9 +26,13 @@ Issue Key: [issue_key]
 - Use `linear:get_issue` with the issue key from $ARGUMENTS
 - Retrieve issue key, ID, title, and description
 
+### For Jira Provider (`"jira"`)
+- Use `jira:get_issue` with the issue key from $ARGUMENTS
+- Retrieve issue key, ID, title, and description
+
 4. **Output Results**: Display the issue information in this format:
    - **Key**: Issue key
-   - **ID**: Issue ID  
+   - **ID**: Issue ID
    - **Title**: Issue title
    - **Description**: Issue description
 
