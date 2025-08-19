@@ -8,10 +8,12 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 ## Workflow Steps
 
-1. Read the default branch name from the "default-branch" field in .claude/settings.claude-constructor.json, use with `git checkout [name]`.
+1. Run the `.claude/commands/read-configuration.md` command to get the "default-branch" field
 
-2. Ensure that you have the latest changes, using `git pull`
+2. Run `git checkout [default-branch]`
 
-3. Check out a new branch, using `git checkout -b feat/{issue key}`
+3. Ensure that you have the latest changes, using `git pull`
 
-4. Report DONE to the orchestrating command
+4. Check out a new branch, using `git checkout -b feat/{issue key}`
+
+5. Report DONE to the orchestrating command
