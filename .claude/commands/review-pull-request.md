@@ -8,7 +8,7 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 ## Workflow Steps
 
-1. **Load Configuration**: Run the `.claude/commands/read-configuration.md` command to get silent mode setting
+1. **Load Configuration**: The configuration is automatically loaded via hooks and available in the prompt context
 
 2. **Check Silent Mode**:
    - If `silent-mode` is `true`:

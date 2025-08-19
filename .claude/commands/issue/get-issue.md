@@ -18,7 +18,7 @@ Issue Key: [issue_key]
 
 1. **Parse Arguments**: Extract the issue key from $ARGUMENTS
 
-2. **Load Configuration**: Run the `.claude/commands/read-configuration.md` command to determine the issue tracking provider
+2. **Load Configuration**: The configuration is automatically loaded via hooks and available in the prompt context
 
 3. **Execute Get Issue Operation**:
 

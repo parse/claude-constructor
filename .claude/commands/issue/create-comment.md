@@ -19,7 +19,7 @@ Comment Text: [comment_content]
 
 1. **Parse Arguments**: Extract the issue key and comment text from $ARGUMENTS
 
-2. **Load Configuration**: Run the `.claude/commands/read-configuration.md` command to determine the issue tracking provider and check silent mode setting
+2. **Load Configuration**: The configuration is automatically loaded via hooks and available in the prompt context
 
 3. **Check Silent Mode**: 
    - If `silent-mode` is `true` in the configuration:

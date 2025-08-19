@@ -8,7 +8,7 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 ## Workflow Steps
 
-1. Run the `.claude/commands/read-configuration.md` command to get the "default-branch" field
+1. Get the "default-branch" field from the configuration available in prompt context
 
 2. Run `git checkout [default-branch]`
 

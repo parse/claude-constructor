@@ -17,7 +17,7 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 4. Push the commit using `git push`
 
-5. Run the `.claude/commands/read-configuration.md` command to get:
+5. Get configuration from prompt context:
    - The default branch name from the "default-branch" field
    - The silent mode setting from the "silent-mode" field
 
