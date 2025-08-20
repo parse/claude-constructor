@@ -19,7 +19,7 @@ Comment Text: [comment_content]
 
 1. **Parse Arguments**: Extract the issue key and comment text from $ARGUMENTS
 
-2. **Load Configuration**: Read `.claude/settings.claude-constructor.json` to determine the issue tracking provider
+2. **Load Configuration**: Read `.claude/settings.claude-constructor.json` to determine the issue tracking provider and check silent mode setting
 
 3. **Check Silent Mode or Prompt Issue Provider**: 
    - If `silent-mode` is `true` OR `issue-tracking-provider` is `"prompt-issue"`:
@@ -39,7 +39,7 @@ Comment Text: [comment_content]
 
 5. **Output Results**: Display confirmation of the comment creation:
    - **Issue**: [issue_key]
-   - **Comment Added**: [comment_preview - first 100 characters]
+   - **Comment Added**: [comment_preview - first 100 characters] 
    - **Result**: Success/Failure
 
 6. **Error Handling**: If the issue operation fails, log the error but continue gracefully

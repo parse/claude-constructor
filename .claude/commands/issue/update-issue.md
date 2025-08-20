@@ -21,7 +21,7 @@ Expected status values: "In Progress", "Code Review"
 
 1. **Parse Arguments**: Extract the issue key and new status from $ARGUMENTS
 
-2. **Load Configuration**: Read `.claude/settings.claude-constructor.json` to determine the issue tracking provider
+2. **Load Configuration**: Read `.claude/settings.claude-constructor.json` to determine the issue tracking provider and check silent mode setting
 
 3. **Check Silent Mode or Prompt Issue Provider**:
    - If `silent-mode` is `true` OR `issue-tracking-provider` is `"prompt-issue"`:

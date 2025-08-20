@@ -64,12 +64,12 @@ The workflow supports multiple issue tracking systems through an abstraction lay
 
 #### Configuration File
 
-Create or update `.claude/settings.claude-constructor.json` in your repository:
-
 ```json
+# .claude/settings.claude-constructor.json
 {
   "issue-tracking-provider": "linear",
-  "default-branch": "main"
+  "default-branch": "main",
+  "silent-mode": false
 }
 ```
 
@@ -77,6 +77,7 @@ Create or update `.claude/settings.claude-constructor.json` in your repository:
 
 **Linear (Default)**
 ```json
+# .claude/settings.claude-constructor.json
 {
   "issue-tracking-provider": "linear"
 }
@@ -87,6 +88,7 @@ Create or update `.claude/settings.claude-constructor.json` in your repository:
 
 **Jira**
 ```json
+# .claude/settings.claude-constructor.json
 {
   "issue-tracking-provider": "jira"
 }
