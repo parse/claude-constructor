@@ -17,19 +17,17 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 4. Push the commit using `git push`
 
-5. Read the Settings section in $ARGUMENTS to get the following:
-   - The default branch name from the "default-branch" field
-   - The silent mode setting from the "silent-mode" field
+5. Read the Settings section in $ARGUMENTS
 
 6. **Check Silent Mode for Pull Request Creation**:
-   - If `silent-mode` is `false`:
+   - If `silent-mode` is `false` AND `issue-tracking-provider` is NOT `"prompt-issue"`:
      - Create a pull request using `gh pr create --title "feat: [issue key] [brief description from commit]" --base [default branch name] --head $(git branch --show-current)`
-   - If `silent-mode` is `true`:
+   - If `silent-mode` is `true` OR `issue-tracking-provider` is `"prompt-issue"`:
      - Log: "Silent mode: Would have created PR with title 'feat: [issue key] [brief description]'"
      - Skip the actual PR creation
 
 7. **Check Silent Mode for Issue Status Update**:
-   - If `silent-mode` is `false`:
+   - If `silent-mode` is `false` AND `issue-tracking-provider` is NOT `"prompt-issue"`:
      - Update issue status to "Code Review" - run the .claude/commands/issue/update-issue.md command, passing the issue key and new status as arguments to it
 
      Get the issue key from the state management file in $ARGUMENTS.
@@ -39,7 +37,7 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
      Issue Key: [issue key from state management file]
      New Status: Code Review
      ```
-   - If `silent-mode` is `true`:
+   - If `silent-mode` is `true` OR `issue-tracking-provider` is `"prompt-issue"`:
      - Log: "Silent mode: Would have updated issue [issue key] status to 'Code Review'"
      - Skip the issue update
 
