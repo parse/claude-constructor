@@ -8,9 +8,9 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 ## Workflow Steps
 
-1. Get the "default-branch" field from the configuration available in prompt context
+1. Read the Settings section in $ARGUMENTS to get the default branch name
 
-2. Run `git checkout [default-branch]`
+2. Run `git checkout [default branch name]`
 
 3. Ensure that you have the latest changes, using `git pull`
 

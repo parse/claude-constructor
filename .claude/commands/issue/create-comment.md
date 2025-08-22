@@ -19,7 +19,7 @@ Comment Text: [comment_content]
 
 1. **Parse Arguments**: Extract the issue key and comment text from $ARGUMENTS
 
-2. **Load Configuration**: The configuration is automatically loaded via hooks and available in the prompt context
+2. **Load Settings**: Read the Settings section in $ARGUMENTS to get the silent mode setting
 
 3. **Check Silent Mode**: 
    - If `silent-mode` is `true` in the configuration:

@@ -18,7 +18,7 @@ Issue Key: [issue_key]
 
 1. **Parse Arguments**: Extract the issue key from $ARGUMENTS
 
-2. **Load Configuration**: The configuration is automatically loaded via hooks and available in the prompt context
+1. **Load Settings**: Read the Settings section in $ARGUMENTS to get the issue tracking provider setting
 
 3. **Execute Get Issue Operation**:
 

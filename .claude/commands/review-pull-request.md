@@ -8,7 +8,7 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 ## Workflow Steps
 
-1. **Load Configuration**: The configuration is automatically loaded via hooks and available in the prompt context
+1. **Load Settings**: Read the Settings section in $ARGUMENTS to get the silent-mode setting
 
 2. **Check Silent Mode**:
    - If `silent-mode` is `true`:
