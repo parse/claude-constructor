@@ -194,6 +194,7 @@ I also recommend checking in on the work as it is happening, to gauge if anythin
 ## Prerequisites
 
 ### Technical Requirements
+- Python (Python 2 or Python 3)
 - Issue tracking system MCP integration configured (see Issue Tracking System Integration section)
 - GitHub CLI (`gh`) authenticated
 - Git repository
