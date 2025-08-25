@@ -1,7 +1,7 @@
 ---
 argument-hint: [issue key]
 description: Implement feature described in [issue key]
-allowed-tools: Bash(./scripts/load_settings.sh)
+allowed-tools: Bash(python scripts/load_settings.py)
 ---
 
 # Feature Implementation Command
