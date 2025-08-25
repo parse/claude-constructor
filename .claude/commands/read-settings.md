@@ -1,3 +1,8 @@
+---
+allowed-tools: Bash(python scripts/load_settings.py)
+description: Read configuration settings for the workflow
+---
+
 # Read Settings Command
 
 ## Purpose

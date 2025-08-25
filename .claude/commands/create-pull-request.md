@@ -1,3 +1,8 @@
+---
+allowed-tools: Bash(git status:*), Bash(git push:*), Bash(gh pr create:*), Bash(git branch:*)
+description: Create pull request for implemented increment
+---
+
 # Create Pull Request Command
 
 ## Purpose

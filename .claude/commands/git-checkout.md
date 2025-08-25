@@ -1,3 +1,8 @@
+---
+allowed-tools: Bash(git checkout:*), Bash(git pull:*)
+description: Check out a new git branch for implementation
+---
+
 # Git Checkout Command
 
 ## Purpose
