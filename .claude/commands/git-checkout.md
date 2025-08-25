@@ -15,10 +15,10 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 1. Read the Settings section in $ARGUMENTS to get the default branch name
 
-2. Run `git checkout [default branch name]`
+2. Run !`git checkout [default branch name]`
 
-3. Ensure that you have the latest changes, using `git pull`
+3. Ensure that you have the latest changes, using !`git pull`
 
-4. Check out a new branch, using `git checkout -b feat/{issue key}`
+4. Check out a new branch, using !`git checkout -b feat/{issue key}`
 
 5. Report DONE to the orchestrating command

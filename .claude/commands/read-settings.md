@@ -13,7 +13,7 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 ## Workflow Steps
 
-1. Read settings by running `python scripts/load_settings.py`
+1. Read settings by running !`python scripts/load_settings.py`
 
 2. Add the settings in $ARGUMENTS, in a new section called `## Settings`, on this format
     - key: value
