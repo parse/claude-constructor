@@ -22,6 +22,7 @@ When this command is run with a state management file as $ARGUMENTS.
     - [ ] No breaking changes introduced
     - [ ] Feature works in both development and build modes
     - [ ] Business rules are enforced consistently
+    - [ ] No stubs or TODOs, all functionality should be completed
 
 5. Ultrathink about your findings and provide detailed feedback:
     - What's implemented correctly
