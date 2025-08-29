@@ -1,21 +1,18 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
 
 """
 Test cases for load_settings.py
-Compatible with Python 2 and Python 3
 """
-
-from __future__ import print_function
 import json
 import os
 import sys
 import tempfile
 import unittest
 import shutil
+from io import StringIO
 
 # Import the module under test
-from load_settings import format_json, main, CLAUDE_CONSTRUCTOR_DEFAULT_SETTINGS, CLAUDE_CONSTRUCTOR_LOCAL_SETTINGS
+from load_settings import format_json, main, load_and_merge_settings, CLAUDE_CONSTRUCTOR_LOCAL_SETTINGS
 
 
 class TestLoadSettings(unittest.TestCase):
@@ -28,10 +25,7 @@ class TestLoadSettings(unittest.TestCase):
         os.chdir(self.test_dir)
         
         # Create .claude directory
-        try:
-            os.makedirs('.claude')
-        except OSError:
-            pass  # Directory might already exist
+        os.makedirs('.claude', exist_ok=True)
         
     def tearDown(self):
         """Clean up test environment"""
@@ -47,12 +41,7 @@ class TestLoadSettings(unittest.TestCase):
             json.dump(test_data, f)
             
         # Capture output
-        old_stdout = sys.stdout
-        try:
-            from io import StringIO
-        except ImportError:
-            from StringIO import StringIO
-            
+        old_stdout = sys.stdout            
         sys.stdout = StringIO()
         result = format_json(test_file)
         output = sys.stdout.getvalue()
@@ -78,61 +67,68 @@ class TestLoadSettings(unittest.TestCase):
         self.assertFalse(result)
         
     def test_main_with_local_settings(self):
-        """Test main function with local settings file"""
-        test_data = {"local-setting": "local-value"}
+        """Test main function with local settings file - should merge with defaults"""
+        test_data = {
+            "issue-tracking-provider": "jira",  # Override this
+            # default-branch and silent-mode will use defaults
+        }
         
         with open(CLAUDE_CONSTRUCTOR_LOCAL_SETTINGS, 'w') as f:
             json.dump(test_data, f)
             
-        old_stdout = sys.stdout
-        try:
-            from io import StringIO
-        except ImportError:
-            from StringIO import StringIO
-            
+        old_stdout = sys.stdout            
         sys.stdout = StringIO()
         main()
         output = sys.stdout.getvalue()
         sys.stdout = old_stdout
         
-        self.assertIn("Using LOCAL settings:", output)
-        self.assertIn("local-setting: local-value", output)
+        self.assertIn("Using LOCAL settings with SCHEMA defaults", output)
+        self.assertIn("issue-tracking-provider: jira", output)  # Local override
+        self.assertIn("default-branch: main", output)  # Schema default
+        self.assertIn("silent-mode: False", output)  # Schema default
         
-    def test_main_with_default_settings_only(self):
-        """Test main function with only default settings file"""
-        test_data = {"default-setting": "default-value"}
-        
-        with open(CLAUDE_CONSTRUCTOR_DEFAULT_SETTINGS, 'w') as f:
-            json.dump(test_data, f)
+    def test_main_with_no_local_settings(self):
+        """Test main function with no local settings - should use schema defaults"""
+        # Ensure local settings file doesn't exist
+        if os.path.exists(CLAUDE_CONSTRUCTOR_LOCAL_SETTINGS):
+            os.remove(CLAUDE_CONSTRUCTOR_LOCAL_SETTINGS)
             
-        old_stdout = sys.stdout
-        try:
-            from io import StringIO
-        except ImportError:
-            from StringIO import StringIO
-            
+        old_stdout = sys.stdout            
         sys.stdout = StringIO()
         main()
         output = sys.stdout.getvalue()
         sys.stdout = old_stdout
         
-        self.assertIn("Using DEFAULT settings:", output)
-        self.assertIn("default-setting: default-value", output)
+        self.assertIn("Using SCHEMA defaults:", output)
+        self.assertIn("issue-tracking-provider: linear", output)
         
     def test_main_no_settings_files(self):
-        """Test main function with no settings files"""
-        old_stdout = sys.stdout
-        try:
-            from io import StringIO
-        except ImportError:
-            from StringIO import StringIO
-            
+        """Test main function with no settings files - should use schema defaults"""
+        old_stdout = sys.stdout            
         sys.stdout = StringIO()
         main()
         output = sys.stdout.getvalue()
         sys.stdout = old_stdout
         
-        self.assertIn("No settings file found", output)
+        self.assertIn("Using SCHEMA defaults:", output)
+        self.assertIn("issue-tracking-provider: linear", output)
+        self.assertIn("default-branch: main", output)
+        self.assertIn("silent-mode: False", output)
+    
+    def test_partial_local_override(self):
+        """Test that partial local settings properly merge with defaults"""
+        # Only override one setting
+        test_data = {"silent-mode": True}
+        
+        with open(CLAUDE_CONSTRUCTOR_LOCAL_SETTINGS, 'w') as f:
+            json.dump(test_data, f)
+        
+        settings = load_and_merge_settings()
+        
+        # Check merged result
+        self.assertEqual(settings["silent-mode"], True)  # Local override
+        self.assertEqual(settings["issue-tracking-provider"], "linear")  # Default
+        self.assertEqual(settings["default-branch"], "main")  # Default
 
 
 if __name__ == "__main__":

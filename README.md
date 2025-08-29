@@ -64,11 +64,14 @@ The workflow supports multiple issue tracking systems through an abstraction lay
 
 #### Configuration File
 
-Similar to `./claude/settings.json` and `.claude/settings.local.json`, there are two ways of using configuration in Claude Constructor.
-`.claude/settings.claude-constructor.json` has default values, but you can override these by creating `.claude/settings.claude-constructor.local.json`.
+Configuration in Claude Constructor works with schema defaults and optional local overrides.
+
+The defaults are defined in `.claude/settings.claude-constructor.schema.json`. You can override these defaults by creating `.claude/settings.claude-constructor.local.json`. If no local settings file exists, the schema defaults will be used automatically.
+
+An example configuration is provided in `.claude/settings.claude-constructor.example.json` for reference.
 
 ```json
-# .claude/settings.claude-constructor.json
+# .claude/settings.claude-constructor.example.json
 {
   "issue-tracking-provider": "linear",
   "default-branch": "main",
@@ -80,7 +83,7 @@ Similar to `./claude/settings.json` and `.claude/settings.local.json`, there are
 
 **Linear (Default)**
 ```json
-# .claude/settings.claude-constructor.json
+# .claude/settings.claude-constructor.example.json
 {
   "issue-tracking-provider": "linear"
 }
@@ -92,7 +95,7 @@ Similar to `./claude/settings.json` and `.claude/settings.local.json`, there are
 
 **Jira**
 ```json
-# .claude/settings.claude-constructor.json
+# .claude/settings.claude-constructor.example.json
 {
   "issue-tracking-provider": "jira"
 }
@@ -111,7 +114,7 @@ Silent mode allows you to run the workflow without making external API calls to 
 To enable silent mode, set `"silent-mode": true` in your configuration:
 
 ```json
-# .claude/settings.claude-constructor.json
+# .claude/settings.claude-constructor.example.json
 {
   "silent-mode": true
 }
@@ -194,7 +197,7 @@ I also recommend checking in on the work as it is happening, to gauge if anythin
 ## Prerequisites
 
 ### Technical Requirements
-- Python (Python 2 or Python 3)
+- Python (python3)
 - Issue tracking system MCP integration configured (see Issue Tracking System Integration section)
 - GitHub CLI (`gh`) authenticated
 - Git repository
@@ -203,7 +206,7 @@ I also recommend checking in on the work as it is happening, to gauge if anythin
 ### Required Configuration Files
 - `/CLAUDE.md` - General principles, quality gates, and development workflow
 - `docs/git-commit.md` - Git commit guidelines (example available in `docs/git-commit.md` in Claude Constructor)
-- `.claude/settings.claude-constructor.json` - Configuration of issue tracking provider, default git branch name, and silent mode
+- `.claude/settings.claude-constructor.example.json` - Example configuration file showing available settings
 
 ### Optional Configuration Files
 - `docs/requirements.md` - Domain principles and business rules (can be referenced during implementation planning and code review)
@@ -244,7 +247,7 @@ In this repository:
 │   │   ├── get-issue.md                    # Issue tracking system: Get issue details
 │   │   ├── update-issue.md                 # Issue tracking system: Update issue status
 │   │   ├── create-comment.md               # Issue tracking system: Add comments to issue
-├── settings.claude-constructor.json        # Configuration settings (project level, checked in)
+├── settings.claude-constructor.example.json # Example configuration file
 └── settings.claude-constructor.local.json  # Configuration settings (local, gitignored)
 
 docs/

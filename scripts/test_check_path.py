@@ -1,6 +1,4 @@
-#!/usr/bin/env python
-
-from __future__ import print_function
+#!/usr/bin/env python3
 import sys
 import os
 import json
@@ -30,11 +28,11 @@ def run_check_path(json_input, script_path='check_path.py'):
         )
         
         # Send input and get output
-        stdout, stderr = process.communicate(json_input.encode() if hasattr(json_input, 'encode') else json_input)
+        stdout, stderr = process.communicate(json_input.encode())
         
-        return process.returncode, stderr.decode() if stderr else ''
+        return process.returncode, stderr.decode('utf-8') if stderr else ''
     except Exception as e:
-        print("Error running script: %s" % str(e))
+        print(f"Error running script: {str(e)}")
         return -1, str(e)
 
 def test_case(name, json_data, expected_exit_code, should_block=None):
@@ -51,33 +49,33 @@ def test_case(name, json_data, expected_exit_code, should_block=None):
             passed = False
     
     # Print result
-    print("%sTesting:%s %s" % (YELLOW, RESET, name))
-    print("  Input: %s" % json_str[:100])
+    print(f"{YELLOW}Testing:{RESET} {name}")
+    print(f"  Input: {json_str[:100]}")
     
     if exit_code == expected_exit_code:
-        print("  ✓ Exit code: %d (expected %d)" % (exit_code, expected_exit_code))
+        print(f"  ✓ Exit code: {exit_code} (expected {expected_exit_code})")
     else:
-        print("  %s✗ Exit code: %d (expected %d)%s" % (RED, exit_code, expected_exit_code, RESET))
+        print(f"  {RED}✗ Exit code: {exit_code} (expected {expected_exit_code}){RESET}")
         passed = False
     
     if should_block and stderr:
         if "Edits are not allowed" in stderr:
             print("  ✓ Error message contains: 'Edits are not allowed'")
         else:
-            print("  %s✗ Error message: '%s'%s" % (RED, stderr.strip(), RESET))
+            print(f"  {RED}✗ Error message: '{stderr.strip()}'{RESET}")
             passed = False
     
     if passed:
-        print("  %s✓ PASS%s" % (GREEN, RESET))
+        print(f"  {GREEN}✓ PASS{RESET}")
     else:
-        print("  %s✗ FAIL%s" % (RED, RESET))
+        print(f"  {RED}✗ FAIL{RESET}")
     
     print()
     return passed
 
 def main():
     print("Testing check_path.py...")
-    print("Current working directory: %s" % os.getcwd())
+    print(f"Current working directory: {os.getcwd()}")
     print("-" * 50)
     
     tests_run = 0
@@ -285,15 +283,15 @@ def main():
     print("=" * 50)
     print("TEST SUMMARY")
     print("=" * 50)
-    print("Tests run: %d" % tests_run)
-    print("Tests passed: %s%d%s" % (GREEN, tests_passed, RESET))
-    print("Tests failed: %s%d%s" % (RED, tests_failed, RESET))
+    print(f"Tests run: {tests_run}")
+    print(f"Tests passed: {GREEN}{tests_passed}{RESET}")
+    print(f"Tests failed: {RED}{tests_failed}{RESET}")
     
     if tests_failed == 0:
-        print("%s[SUCCESS]%s All tests passed!" % (GREEN, RESET))
+        print(f"{GREEN}[SUCCESS]{RESET} All tests passed!")
         sys.exit(0)
     else:
-        print("%s[FAILURE]%s Some tests failed." % (RED, RESET))
+        print(f"{RED}[FAILURE]{RESET} Some tests failed.")
         sys.exit(1)
 
 if __name__ == "__main__":

@@ -1,6 +1,4 @@
-#!/usr/bin/env python
-
-from __future__ import print_function
+#!/usr/bin/env python3
 import sys
 import json
 import os
@@ -10,16 +8,17 @@ def main():
         # Read JSON from stdin
         input_data = sys.stdin.read()
         
-        # Parse JSON (works in both Python 2 and 3)
+        # Parse JSON
         try:
             data = json.loads(input_data)
-        except (ValueError, getattr(json, 'JSONDecodeError', ValueError)):
+        except json.JSONDecodeError:
             # If JSON parsing fails, allow the operation
             sys.exit(0)
         
-        # Extract file_path from tool_input
+        # Extract file_path from tool_input or directly from data
+        # Support both formats: {"tool_input": {"file_path": "..."}} and {"file_path": "..."}
         tool_input = data.get('tool_input', {})
-        file_path = tool_input.get('file_path', '')
+        file_path = tool_input.get('file_path', '') or data.get('file_path', '')
         
         # If no file path found, allow operation
         if not file_path:
@@ -47,25 +46,12 @@ def main():
                 pass
         
         # Check if file is under current directory
-        # Python 2/3 compatible path comparison
         try:
-            # Try Python 3.5+ method first
-            if hasattr(os.path, 'commonpath'):
-                common = os.path.commonpath([abs_file_path, current_dir])
-                if common == current_dir:
-                    print("Edits are not allowed in this repository. Use external directories added with /add-dir.", file=sys.stderr)
-                    sys.exit(2)
-            else:
-                # Python 2 fallback: use commonprefix with normalization
-                # Ensure paths end with separator for accurate comparison
-                abs_file_with_sep = abs_file_path + os.sep if not abs_file_path.endswith(os.sep) else abs_file_path
-                current_with_sep = current_dir + os.sep
-                
-                # Check if file path starts with current directory
-                if abs_file_with_sep.startswith(current_with_sep) or abs_file_path == current_dir:
-                    print("Edits are not allowed in this repository. Use external directories added with /add-dir.", file=sys.stderr)
-                    sys.exit(2)
-        except (ValueError, AttributeError):
+            common = os.path.commonpath([abs_file_path, current_dir])
+            if common == current_dir:
+                print("Edits are not allowed in this repository. Use external directories added with /add-dir.", file=sys.stderr)
+                sys.exit(2)
+        except ValueError:
             # Paths are on different drives (Windows) or can't be compared
             # Allow the operation
             pass

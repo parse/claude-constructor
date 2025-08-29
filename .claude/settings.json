@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "./scripts/check_path.py"
+            "command": "python3 ./scripts/check_path.py"
           }
         ]
       }
