@@ -1,7 +1,7 @@
 ---
-argument-hint: [issue key]
-description: Implement feature described in [issue key]
-allowed-tools: Bash(python3 ./scripts/load_settings.py)
+argument-hint: [issue key or user prompt]
+description: Implement feature from issue tracking system or user prompt
+allowed-tools: Bash(python3 scripts/load_settings.py)
 ---
 
 # Feature Implementation Command
@@ -14,10 +14,23 @@ You are responsible for making sure all steps are done according to the workflow
 All steps MUST complete, and they must be completed in the order described below.
 You are only allowed to move to the next step after the previous step has reported DONE.
 
-The issue key for the feature to implement is in $ARGUMENTS.
+The issue key or prompt for the feature to implement is in $ARGUMENTS.
 
 IMPORTANT: The workflow steps will report to you when they're done, and only then can the next step start. Do not stop until the workflow is completed.
 Create a TODO list for the workflow steps, and follow it.
+
+## Pre-Processing
+
+Before starting the workflow, slugify the issue key/feature name from $ARGUMENTS:
+- Convert to lowercase
+- Replace spaces with hyphens
+- Remove special characters except hyphens and underscores
+- Remove consecutive hyphens
+- Example: "Add Dark Mode" → "add-dark-mode"
+- Example: "Fix login bug!" → "fix-login-bug"
+- Example: "ABC-123" → "ABC-123"
+
+Use this slugified version as the issue key for ALL subsequent workflow steps.
 
 ## Workflow Steps
 
