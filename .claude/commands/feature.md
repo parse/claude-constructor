@@ -1,5 +1,5 @@
 ---
-argument-hint: [issue key or user prompt]
+argument-hint: [issue key or prompt]
 description: Implement feature from issue tracking system or user prompt
 allowed-tools: Bash(python3 scripts/load_settings.py)
 ---
@@ -21,16 +21,10 @@ Create a TODO list for the workflow steps, and follow it.
 
 ## Pre-Processing
 
-Before starting the workflow, slugify the issue key/feature name from $ARGUMENTS:
-- Convert to lowercase
-- Replace spaces with hyphens
-- Remove special characters except hyphens and underscores
-- Remove consecutive hyphens
-- Example: "Add Dark Mode" → "add-dark-mode"
-- Example: "Fix login bug!" → "fix-login-bug"
-- Example: "ABC-123" → "ABC-123"
-
-Use this slugified version as the issue key for ALL subsequent workflow steps.
+Before starting the workflow for user prompts, create an issue key based on $ARGUMENTS:
+- List the contents of `state_management`
+- If there are no filenames using the format `prompt-{number}`, use issue key `prompt-1`
+- If there is at least one filename using the format `prompt-{number}`, use issue key `prompt-{number+1}`
 
 ## Workflow Steps
 
