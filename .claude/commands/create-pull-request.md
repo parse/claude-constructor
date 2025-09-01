@@ -41,8 +41,4 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
      - Log: "Silent mode: Would have updated issue [issue key] status to 'Code Review'"
      - Skip the issue update
 
-8. **Legacy Linear Update** (if applicable and silent mode is false):
-   - Update Linear issue status to "Code Review" using `linear:update_issue`
-   - Skip if silent mode is true
-
-9. Report DONE to the orchestrating command
+8. Report DONE to the orchestrating command
