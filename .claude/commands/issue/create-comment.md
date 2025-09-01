@@ -22,7 +22,7 @@ Comment Text: [comment_content]
 2. **Load Settings**: Read the Settings section in $ARGUMENTS
 
 3. **Check Silent Mode or Prompt Issue Provider**: 
-   - If `silent-mode` is `true` OR `issue-tracking-provider` is `"prompt-issue"`:
+   - If `silent-mode` is `true` OR `issue-tracking-provider` is `"prompt"`:
      - Log the comment operation locally: "Silent mode: Would have added comment to [issue_key]: [comment_preview]"
      - Skip the actual API call (step 4)
      - Continue to step 5

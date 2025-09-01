@@ -24,7 +24,7 @@ Expected status values: "In Progress", "Code Review"
 2. **Load Settings**: Read the Settings section in $ARGUMENTS
 
 3. **Check Silent Mode or Prompt Issue Provider**:
-   - If `silent-mode` is `true` OR `issue-tracking-provider` is `"prompt-issue"`:
+   - If `silent-mode` is `true` OR `issue-tracking-provider` is `"prompt"`:
      - Log the status update operation locally: "Silent mode: Would have updated [issue_key] status to '[new_status]'"
      - Skip the actual API calls (step 4)
      - Continue to step 5

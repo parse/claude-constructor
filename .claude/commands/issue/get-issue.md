@@ -31,7 +31,7 @@ Issue Key: [issue_key]
 - Retrieve issue key, ID, title, and description
 
 4. **Output Results**: Display the issue information in this format:
-   ### For Prompt Issue Provider (`"prompt-issue"`)
+   ### For Prompt Issue Provider (`"prompt"`)
    - **Prompt**: User prompt
 
    ### For Issue Tracking Providers

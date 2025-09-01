@@ -109,7 +109,7 @@ An example configuration is provided in `.claude/settings.claude-constructor.exa
 ```json
 # .claude/settings.claude-constructor.json
 {
-  "issue-tracking-provider": "prompt-issue"
+  "issue-tracking-provider": "prompt"
 }
 ```
 - No external issue tracking system required
@@ -140,7 +140,7 @@ When silent mode is enabled:
 - **PR review comments**: Skipped entirely
 - All other operations (git commits, code changes, tests) execute normally
 
-**Note**: The `"prompt-issue"` provider automatically behaves like silent mode, so you don't need to set both.
+**Note**: The `"prompt"` provider automatically behaves like silent mode, so you don't need to set both.
 
 #### Issue Tracking System Requirements
 
