@@ -69,8 +69,9 @@ def load_and_merge_settings():
                 for key, value in local_settings.items():
                     if key != '$schema':
                         settings[key] = value
-        except (IOError, OSError, json.JSONDecodeError):
-            pass  # If local file is invalid, just use defaults
+        except (IOError, OSError, json.JSONDecodeError) as e:
+            print(f"Warning: Invalid local settings file: {e}", file=sys.stderr)
+            print("Using default settings instead.", file=sys.stderr)
     
     return settings
 
