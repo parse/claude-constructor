@@ -22,7 +22,7 @@ Create a TODO list for the workflow steps, and follow it.
 ## Pre-Processing
 
 Before starting the workflow for user prompts, create an issue key based on $ARGUMENTS:
-- List the contents of `state_management`
+- List the contents of `state_management` in the additional directories
 - If there are no filenames using the format `prompt-{number}`, use issue key `prompt-1`
 - If there is at least one filename using the format `prompt-{number}`, use issue key `prompt-{number+1}`
 
