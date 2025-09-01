@@ -1,7 +1,7 @@
 ---
 argument-hint: [issue key]
 description: Implement feature described in [issue key]
-allowed-tools: Bash(python scripts/load_settings.py), Bash(python3 scripts/load_settings.py)
+allowed-tools: Bash(python3 ./scripts/load_settings.py)
 ---
 
 # Feature Implementation Command
@@ -21,7 +21,7 @@ Create a TODO list for the workflow steps, and follow it.
 
 ## Workflow Steps
 
-1. Read @CLAUDE.md: General principles, quality gates, and development workflow
+1. Read @CLAUDE.md: General principles, quality gates, and development workflow. If the @CLAUDE.md refers to other @CLAUDE.md files, read those as well.
 2. Create a state management file for this increment - run the .claude/commands/create-state-management-file.md command, passing $ARGUMENTS as argument to it
 3. Read settings - run the .claude/commands/read-settings.md command, passing the state management file as argument to it
 4. Read issue - run the .claude/commands/issue/read-issue.md command, passing the state management file as argument to it
