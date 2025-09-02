@@ -19,10 +19,10 @@ Comment Text: [comment_content]
 
 1. **Parse Arguments**: Extract the issue key and comment text from $ARGUMENTS
 
-2. **Load Settings**: Read the Settings section in $ARGUMENTS to get the silent mode setting
+2. **Load Settings**: Read the Settings section in $ARGUMENTS
 
-3. **Check Silent Mode**: 
-   - If `silent-mode` is `true` in the configuration:
+3. **Check Silent Mode or Prompt Issue Provider**: 
+   - If `silent-mode` is `true` OR `issue-tracking-provider` is `"prompt"`:
      - Log the comment operation locally: "Silent mode: Would have added comment to [issue_key]: [comment_preview]"
      - Skip the actual API call (step 4)
      - Continue to step 5

@@ -4,7 +4,7 @@ A systematic workflow engine for implementing functionality with Claude Code, de
 
 ## Overview
 
-This system orchestrates feature development through a structured 13-step workflow that covers complete implementation, comprehensive testing, and automated code review. Each command works together as part of a larger orchestrated process.
+This system orchestrates feature development through a structured 14-step workflow that covers complete implementation, comprehensive testing, and automated code review. Each command works together as part of a larger orchestrated process.
 The goal has been to enable Claude Code to work for extended periods of time without deviating from the plan.
 
 ## Core Workflow
@@ -14,21 +14,22 @@ The main orchestrator (`feature.md`) follows this sequence:
 ### Planning
 1. **Read configuration files** - Load development guidelines, quality gates, and other documentation
 2. **Create state management file** - Used to track workflow progress
-3. **Read Linear issue** - Fetch issue details via Linear MCP
-4. **Define requirements** - Create detailed requirements specification covering business value, user journey, acceptance criteria, and technical constraints
-5. **Get requirements sign-off** - Iterate on the requirements definition until it's ready *(Human Required)*
-6. **Write specification** - Technical spec with parallelization plan
-7. **Get specification sign-off** - Iterate on the specification until it's ready *(Human Required)*
+3. **Read settings** - Get issue tracker and other settings
+4. **Read Linear issue** - Fetch issue details via Linear MCP
+5. **Define requirements** - Create detailed requirements specification covering business value, user journey, acceptance criteria, and technical constraints
+6. **Get requirements sign-off** - Iterate on the requirements definition until it's ready *(Human Required)*
+7. **Write specification** - Technical spec with parallelization plan
+8. **Get specification sign-off** - Iterate on the specification until it's ready *(Human Required)*
 
 ### Implementation
-8. **Check out new branch** - Create feature branch
-9. **Implement increment** - Execute with parallel subagents if possible
-10. **Write end-to-end tests** - Cover user behavior
+9. **Check out new branch** - Create feature branch
+10. **Implement increment** - Execute with parallel subagents if possible
+11. **Write end-to-end tests** - Cover user behavior
 
 ### Review
-11. **Perform code review** - Self-review, addressing findings automatically
-12. **Create pull request** - Creating a pull request on GitHub, describing the work
-13. **Review pull request** - Monitor and respond to feedback *(Human Required)*
+12. **Perform code review** - Self-review, addressing findings automatically
+13. **Create pull request** - Creating a pull request on GitHub, describing the work
+14. **Review pull request** - Monitor and respond to feedback *(Human Required)*
 
 ## Usage
 
@@ -104,6 +105,18 @@ An example configuration is provided in `.claude/settings.claude-constructor.exa
 - Uses `jira:get_issue`, `jira:add_comment_to_issue`, `jira:get_transitions_for_issue`, `jira:transition_issue`
 - Supports fuzzy matching for status names
 
+**Prompt Issue (No External Integration)**
+```json
+# .claude/settings.claude-constructor.json
+{
+  "issue-tracking-provider": "prompt"
+}
+```
+- No external issue tracking system required
+- Prompts user for issue title and description during workflow
+- Automatically skips all external API calls (same as silent mode)
+- Perfect for local development and experimentation
+
 #### Silent Mode
 
 Silent mode allows you to run the workflow without making external API calls to issue tracking systems or creating GitHub pull requests. This is useful for:
@@ -126,6 +139,8 @@ When silent mode is enabled:
 - **GitHub pull requests**: Code is committed and pushed, but PR creation is skipped
 - **PR review comments**: Skipped entirely
 - All other operations (git commits, code changes, tests) execute normally
+
+**Note**: The `"prompt"` provider automatically behaves like silent mode, so you don't need to set both.
 
 #### Issue Tracking System Requirements
 

@@ -1,6 +1,6 @@
 ---
-argument-hint: [issue key]
-description: Implement feature described in [issue key]
+argument-hint: [issue key or prompt]
+description: Implement feature from issue tracking system or user prompt
 allowed-tools: Bash(python3 ./scripts/load_settings.py)
 ---
 
@@ -14,10 +14,17 @@ You are responsible for making sure all steps are done according to the workflow
 All steps MUST complete, and they must be completed in the order described below.
 You are only allowed to move to the next step after the previous step has reported DONE.
 
-The issue key for the feature to implement is in $ARGUMENTS.
+The issue key or prompt for the feature to implement is in $ARGUMENTS.
 
 IMPORTANT: The workflow steps will report to you when they're done, and only then can the next step start. Do not stop until the workflow is completed.
 Create a TODO list for the workflow steps, and follow it.
+
+## Pre-Processing
+
+Before starting the workflow for user prompts, create an issue key based on $ARGUMENTS:
+- List the contents of `state_management` in the additional directories
+- If there are no filenames using the format `prompt-{number}`, use issue key `prompt-1`
+- If there is at least one filename using the format `prompt-{number}`, use issue key `prompt-{number+1}`
 
 ## Workflow Steps
 

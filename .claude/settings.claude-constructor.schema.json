@@ -11,9 +11,9 @@
     },
     "issue-tracking-provider": {
       "type": "string",
-      "description": "The issue tracking system to use for fetching issues and updating statuses. Default: 'linear'",
-      "enum": ["linear", "jira"],
-      "default": "linear"
+      "description": "The issue tracking system to use for fetching issues and updating statuses. Default: 'prompt'",
+      "enum": ["linear", "jira", "prompt"],
+      "default": "prompt"
     },
     "default-branch": {
       "type": "string",

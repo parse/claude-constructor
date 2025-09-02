@@ -8,13 +8,13 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 ## Workflow Steps
 
-1. **Load Settings**: Read the Settings section in $ARGUMENTS to get the silent-mode setting
+1. **Load Settings**: Read the Settings section in $ARGUMENTS
 
 2. **Check Silent Mode**:
-   - If `silent-mode` is `true`:
+   - If `silent-mode` is `true` OR `issue-tracking-provider` is `"prompt"`:
      - Log: "Silent mode: Skipping PR review monitoring and comments"
      - Skip to step 7
-   - If `silent-mode` is `false`:
+   - If `silent-mode` is `false` AND `issue-tracking-provider` is NOT `"prompt"`:
      - Continue with normal PR review workflow (steps 3-6)
 
 3. Monitor the pull request for comments and/or reviews. Use `gh api repos/{OWNER}/{REPO}/pulls/{PR_NUMBER}/comments --jq '.[] | {author: .user.login, body: .body, path: .path, line: .line}'`
@@ -29,8 +29,8 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 6. Repeat steps 3 through 5 until the user approves the pull request. You are not allowed to approve the pull request yourself.
 
-7. **Add pull request feedback comment** (only if silent mode is false):
-   - If `silent-mode` is `false`:
+7. **Add pull request feedback comment** (only if silent mode and not prompt):
+   - If `silent-mode` is `false` AND `issue-tracking-provider` is NOT `"prompt"`:
      - Run the .claude/commands/issue/create-comment.md command, passing the issue key and feedback summary as arguments to it
 
      Get the issue key from the state management file in $ARGUMENTS.
@@ -40,7 +40,7 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
      Issue Key: [issue key from state management file]
      Comment Text: [user feedback summary and changes made in response]
      ```
-   - If `silent-mode` is `true`:
+   - If `silent-mode` is `true` OR `issue-tracking-provider` is `"prompt"`:
      - Log: "Silent mode: Would have added PR feedback comment to issue"
 
 8. Report DONE to the orchestrating command
