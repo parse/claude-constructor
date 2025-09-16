@@ -12,7 +12,9 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 
 ## Workflow Steps
 
-1. Update issue status to "In Progress" - run the .claude/commands/issue/update-issue.md command, passing the issue key and new status as arguments to it
+1. Ensure that the specification was explicitly signed off by the user. If not, go back to the specification signoff step in the larger workflow.
+
+2. Update issue status to "In Progress" - run the .claude/commands/issue/update-issue.md command, passing the issue key and new status as arguments to it
 
 Get the issue key from the state management file in $ARGUMENTS.
 
@@ -22,7 +24,7 @@ Issue Key: [issue key from state management file]
 New Status: In Progress
 ```
 
-2. Add implementation comment - run the .claude/commands/issue/create-comment.md command, passing the issue key and comment as arguments to it
+3. Add implementation comment - run the .claude/commands/issue/create-comment.md command, passing the issue key and comment as arguments to it
 
 Format the arguments as:
 ```
@@ -30,14 +32,14 @@ Issue Key: [issue key from state management file]
 Comment Text: Claude Code implementation started for {name of specification file linked in $ARGUMENTS}
 ```
 
-3. Understand the division of work and spawn subagents:
+4. Understand the division of work and spawn subagents:
     - Read specification to identify agent_ids
     - For each agent_id: spawn a subagent using the Task tool, with agent_id and $ARGUMENTS as arguments to it. For tasks that can be done in parallel, and where dependencies are fulfilled, spawn subagents in parallel.
     - Monitor subagent progress
     - Keep an updated list of TODOs in $ARGUMENTS, including subagent status
     - When monitoring completes for all agent_ids, proceed to step 4
 
-4. Report DONE to the orchestrating command
+5. Report DONE to the orchestrating command
 
 ## This part of the workflow is done when
 
