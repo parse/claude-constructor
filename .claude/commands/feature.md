@@ -1,7 +1,7 @@
 ---
 argument-hint: [issue key or prompt]
 description: Implement feature from issue tracking system or user prompt
-allowed-tools: Bash(python3 ./scripts/load_settings.py)
+allowed-tools: Bash($(command -v python3 || command -v python) ./scripts/load_settings.py)
 ---
 
 # Feature Implementation Command
