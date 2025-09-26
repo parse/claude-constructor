@@ -1,8 +1,15 @@
+---
+name: write-end-to-end-tests
+description: Write E2E tests for implemented increment
+argument-hint: [state-management-file-path]
+model: claude-sonnet-4-0
+---
+
 # Write End-To-End Tests for Increment Command
 
 ## Purpose
 
-Write end-to-end tests for the increment for the issue described in $ARGUMENTS, using the specification linked in $ARGUMENTS. The increment has been implemented when your work starts.
+Write end-to-end tests for the implemented increment using the specification linked in the state management file ($1).
 This command is called by an orchestrating command, and is one of the steps in a larger workflow.
 You MUST follow all workflow steps below, not skipping any step and doing all steps in order.
 
@@ -15,8 +22,6 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
 2. Write a plan for how to test the necessary behavior
 
 3. Write end-to-end tests that cover your plan
-
-4. Report DONE to the orchestrating command
 
 ## This part of the workflow is done when
 

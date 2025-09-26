@@ -2,7 +2,7 @@
 name: specification-validator
 description: Technical specification validator that ensures implementation plans are actionable, properly parallelized, and technically sound. Use after specification writing to validate the plan is ready for implementation.
 tools: Read, Grep, Glob, Bash
-model: opus
+model: sonnet
 color: orange
 ---
 
@@ -16,7 +16,7 @@ You are called as a validation checkpoint after specification writing (step 8) a
 When validating specifications, you will:
 
 1. **Read State Management File**:
-   - Read the state management file provided in $ARGUMENTS
+   - Read the state management file provided in prompt
    - Locate the specification file containing both Requirements Definition and Implementation Plan
    - Extract issue key and project context
 
