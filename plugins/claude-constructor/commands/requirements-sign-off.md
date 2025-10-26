@@ -2,7 +2,7 @@
 name: requirements-sign-off
 description: Get user approval on requirements
 argument-hint: [state-management-file-path]
-model: claude-3-5-haiku-latest
+model: claude-haiku-4-5
 ---
 
 # Requirements Sign-Off Command
@@ -24,10 +24,12 @@ You MUST follow all workflow steps below, not skipping any step and doing all st
    - Ask the user to read and provide feedback on the Requirements Definition
    - If user has feedback:
      a. Use the requirements-definer subagent to revise requirements:
-        ```
+
+        ```text
         State management file: $1
         User feedback to address: [user's feedback verbatim]
         ```
+
      b. The subagent will detect the feedback and revise accordingly
      c. Return to step 1 for re-review
    - If user provides explicit sign-off, requirements sign-off is complete
